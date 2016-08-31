@@ -14,16 +14,56 @@
                         <viewControllerLayoutGuide type="top" id="qkL-Od-lgU"/>
                         <viewControllerLayoutGuide type="bottom" id="n38-gi-rB5"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="zMn-AG-sqS" customClass="CanvasView" customModule="MessagesExtension" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="zMn-AG-sqS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="528"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.98039215690000003" green="0.1450980392" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="528"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X47-rx-isc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Drawings View Controller-->
+        <scene sceneID="7h3-UB-DBA">
+            <objects>
+                <viewController storyboardIdentifier="DrawingsViewController" id="RTM-46-k6k" customClass="DrawingsViewController" customModule="MessagesExtension" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IeK-ak-ZLc"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ohv-ig-tfl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="05y-No-Kc6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="528"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.54412005529999996" green="0.1852806397" blue="0.88319188400000004" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="528"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PQ0-tK-wqu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="616" y="43"/>
+        </scene>
+        <!--Canvas View Controller-->
+        <scene sceneID="jed-9C-YpL">
+            <objects>
+                <viewController storyboardIdentifier="CanvasViewController" id="jot-2E-IAt" customClass="CanvasViewController" customModule="MessagesExtension" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fav-Pg-Cf5"/>
+                        <viewControllerLayoutGuide type="bottom" id="7FL-ki-XiV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XQd-o1-F6b" customClass="CanvasView" customModule="MessagesExtension" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="528"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="528"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zhQ-Et-PPV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1187" y="42"/>
         </scene>
     </scenes>
 </document>

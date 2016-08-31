@@ -10,6 +10,7 @@
 		C923B71C1D760A120055228E /* CanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C923B71B1D760A120055228E /* CanvasViewController.swift */; };
 		C923B71F1D760C370055228E /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C923B71E1D760C370055228E /* CanvasView.swift */; };
 		C923B7211D7610290055228E /* CGPoint+MidPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C923B7201D7610290055228E /* CGPoint+MidPoint.swift */; };
+		C923B7231D77261B0055228E /* DrawingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C923B7221D77261B0055228E /* DrawingsViewController.swift */; };
 		C9A0C1CD1D736B4700E1798C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9A0C1CC1D736B4700E1798C /* Assets.xcassets */; };
 		C9A0C1D41D736B4700E1798C /* MessagesExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C9A0C1D31D736B4700E1798C /* MessagesExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C9A0C1D91D736B4700E1798C /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9A0C1D81D736B4700E1798C /* Messages.framework */; };
@@ -46,6 +47,7 @@
 		C923B71B1D760A120055228E /* CanvasViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanvasViewController.swift; sourceTree = "<group>"; };
 		C923B71E1D760C370055228E /* CanvasView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 		C923B7201D7610290055228E /* CGPoint+MidPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+MidPoint.swift"; sourceTree = "<group>"; };
+		C923B7221D77261B0055228E /* DrawingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingsViewController.swift; sourceTree = "<group>"; };
 		C9A0C1C91D736B4700E1798C /* PlayingWithMessages.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlayingWithMessages.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9A0C1CC1D736B4700E1798C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9A0C1CE1D736B4700E1798C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				C9A0C1DD1D736B4700E1798C /* MainInterface.storyboard */,
 				C923B71D1D760A1E0055228E /* Supporting Files */,
 				C923B7201D7610290055228E /* CGPoint+MidPoint.swift */,
+				C923B7221D77261B0055228E /* DrawingsViewController.swift */,
 			);
 			path = MessagesExtension;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 				C923B7211D7610290055228E /* CGPoint+MidPoint.swift in Sources */,
 				C923B71C1D760A120055228E /* CanvasViewController.swift in Sources */,
 				C9A0C1DC1D736B4700E1798C /* MessagesViewController.swift in Sources */,
+				C923B7231D77261B0055228E /* DrawingsViewController.swift in Sources */,
 				C923B71F1D760C370055228E /* CanvasView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

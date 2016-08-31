@@ -10,6 +10,6 @@ import UIKit
 
 class CanvasViewController: UIViewController {
 
-
+  static let storyboardIdentifier = "CanvasViewController"
 
 }
