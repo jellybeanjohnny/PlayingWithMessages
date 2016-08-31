@@ -42,7 +42,7 @@ class CanvasView: UIView {
     self.bezierPath.lineWidth = CanvasView.lineWidth
     
     // Add a gesture to handle a single tap
-    let tapGesture = UIRotationGestureRecognizer(target: self, action: #selector(handleTap))
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(tapGesture:)))
     addGestureRecognizer(tapGesture)
     
   }
@@ -124,7 +124,12 @@ class CanvasView: UIView {
   // MARK: - Tap Gesture
   func handleTap(tapGesture: UITapGestureRecognizer) {
     let currentPoint = tapGesture.location(in: self)
-    bezierPath
+    bezierPath.move(to: currentPoint)
+    bezierPath.addLine(to: currentPoint)
+    
+    drawBitmap()
+    setNeedsDisplay()
+    bezierPath.removeAllPoints()
   }
   
 }
