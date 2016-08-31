@@ -23,12 +23,12 @@ class CanvasView: UIView {
   
   var incrementalImage: UIImage? {
     willSet {
-      UIGraphicsBeginImageContextWithOptions(self.bounds.size, true, 0.0)
+      UIGraphicsBeginImageContextWithOptions(bounds.size, true, 0.0)
       
-      let rectPath = UIBezierPath(rect: self.bounds)
+      let rectPath = UIBezierPath(rect: bounds)
       UIColor.white.setFill()
       rectPath.fill()
-      newValue?.draw(in: self.bounds)
+      newValue?.draw(in: bounds)
       self.incrementalImage = UIGraphicsGetImageFromCurrentImageContext()
       UIGraphicsEndImageContext()
     }
@@ -41,6 +41,10 @@ class CanvasView: UIView {
     self.bezierPath.lineCapStyle = .round
     self.bezierPath.lineWidth = CanvasView.lineWidth
     
+    // Add a gesture to handle a single tap
+    let tapGesture = UIRotationGestureRecognizer(target: self, action: #selector(handleTap))
+    addGestureRecognizer(tapGesture)
+    
   }
   
   // MARK: Touch Events
@@ -49,9 +53,9 @@ class CanvasView: UIView {
       fatalError("Expected touch object")
     }
     
-    self.bezierPath.move(to: currentPoint)
-    self.previousPoint = currentPoint
-    self.previousPreviousPoint = currentPoint
+    bezierPath.move(to: currentPoint)
+    previousPoint = currentPoint
+    previousPreviousPoint = currentPoint
   }
   
   override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -59,62 +63,68 @@ class CanvasView: UIView {
       fatalError("Expected touch object")
     }
     
-    let midPoint1 = self.previousPoint.midPoint(to: self.previousPreviousPoint)
-    let midPoint2 = self.previousPoint.midPoint(to: currentPoint)
+    let midPoint1 = previousPoint.midPoint(to: previousPreviousPoint)
+    let midPoint2 = previousPoint.midPoint(to: currentPoint)
     
-    self.bezierPath.move(to: midPoint1)
-    self.bezierPath.addQuadCurve(to: midPoint2, controlPoint: self.previousPoint)
+    bezierPath.move(to: midPoint1)
+    bezierPath.addQuadCurve(to: midPoint2, controlPoint: previousPoint)
     
-    self.pointCounter += 1
+    pointCounter += 1
     
-    if self.pointCounter > CanvasView.maximumPoints {
-      self.addToBitmap()
+    if pointCounter > CanvasView.maximumPoints {
+      addToBitmap()
     }
     
-    self.previousPreviousPoint = self.previousPoint
-    self.previousPoint = currentPoint
+    previousPreviousPoint = previousPoint
+    previousPoint = currentPoint
     
-    self.setNeedsDisplay()
+    setNeedsDisplay()
     
   }
   
   override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-    self.addToBitmap()
+    addToBitmap()
   }
   
   override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-    self.touchesEnded(touches, with: event)
+    touchesEnded(touches, with: event)
   }
   
   private func addToBitmap() {
-    self.drawBitmap()
-    self.bezierPath.removeAllPoints()
-    self.pointCounter = 0
+    drawBitmap()
+    bezierPath.removeAllPoints()
+    pointCounter = 0
   }
   
   // MARK: Drawing
   
   private func drawBitmap() {
-    UIGraphicsBeginImageContextWithOptions(self.bounds.size, true, 0.0)
+    UIGraphicsBeginImageContextWithOptions(bounds.size, true, 0.0)
     
     UIColor.black.setStroke()
-    if self.incrementalImage == nil {
-      let rectPath = UIBezierPath(rect: self.bounds)
+    if incrementalImage == nil {
+      let rectPath = UIBezierPath(rect: bounds)
       UIColor.white.setFill()
       rectPath.fill()
     }
     
-    self.incrementalImage?.draw(at: CGPoint(x: 0, y: 0))
-    self.bezierPath.stroke()
+    incrementalImage?.draw(at: CGPoint(x: 0, y: 0))
+    bezierPath.stroke()
     
     
-    self.incrementalImage = UIGraphicsGetImageFromCurrentImageContext()
+    incrementalImage = UIGraphicsGetImageFromCurrentImageContext()
     UIGraphicsEndImageContext()
   }
   
   override func draw(_ rect: CGRect) {
-    self.incrementalImage?.draw(in: rect)
-    self.bezierPath.stroke()
+    incrementalImage?.draw(in: rect)
+    bezierPath.stroke()
+  }
+  
+  // MARK: - Tap Gesture
+  func handleTap(tapGesture: UITapGestureRecognizer) {
+    let currentPoint = tapGesture.location(in: self)
+    bezierPath
   }
   
 }
