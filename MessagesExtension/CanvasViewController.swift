@@ -11,5 +11,9 @@ import UIKit
 class CanvasViewController: UIViewController {
 
   static let storyboardIdentifier = "CanvasViewController"
+  
+  @IBAction func doneButtonPressed() {
+    print("Done button pressed")
+  }
 
 }
