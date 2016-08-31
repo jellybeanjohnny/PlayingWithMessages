@@ -106,7 +106,6 @@ class CanvasView: UIView {
     
     self.incrementalImage?.draw(at: CGPoint(x: 0, y: 0))
     self.bezierPath.stroke()
-    print(self.bezierPath)
     
     
     self.incrementalImage = UIGraphicsGetImageFromCurrentImageContext()

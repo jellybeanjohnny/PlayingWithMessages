@@ -16,7 +16,7 @@ class DrawingsViewController: UIViewController {
   
   /// An enumeration that represents an item in the collection view.
   enum CollectionViewItem {
-    case drawing
+    case drawing(UIImage)
     case create
   }
   
@@ -33,7 +33,8 @@ class DrawingsViewController: UIViewController {
   // MARK: - Initialization
   required init?(coder aDecoder: NSCoder) {
     
-    var items: [CollectionViewItem] = [] // we don't have anything just yet...
+    let reversedHistory = DrawingHistory.load().reversed()
+    var items: [CollectionViewItem] = reversedHistory.map{ .drawing($0) }
     
     items.insert(.create, at: 0)
     
@@ -48,6 +49,12 @@ class DrawingsViewController: UIViewController {
     collectionView.delegate = self
     collectionView.dataSource = self
     
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    
+    collectionView.reloadData()
   }
 
 }

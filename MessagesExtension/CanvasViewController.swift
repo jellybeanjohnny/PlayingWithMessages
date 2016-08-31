@@ -10,10 +10,16 @@ import UIKit
 
 class CanvasViewController: UIViewController {
 
+  // MARK: - Properties
   static let storyboardIdentifier = "CanvasViewController"
   
+  @IBOutlet weak var canvasView: CanvasView!
+  
+  
   @IBAction func doneButtonPressed() {
-    print("Done button pressed")
+    if let drawing = canvasView.incrementalImage {
+      DrawingHistory.save(drawing: drawing)
+    }
   }
 
 }
