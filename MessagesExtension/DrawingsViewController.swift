@@ -25,6 +25,8 @@ class DrawingsViewController: UIViewController {
   static let drawingCellIdentifier = "DrawingCell"
   static let createDrawingCellIdenifier = "CreateCell"
   
+  weak var delegate: DrawingsViewControllerDelegate?
+  
   let items: [CollectionViewItem]
   
   
@@ -97,4 +99,43 @@ extension DrawingsViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 extension DrawingsViewController: UICollectionViewDelegate {
   
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let item = items[indexPath.row]
+    
+    switch item {
+    case .create:
+      delegate?.drawingsViewControllerDidSelectAdd(self)
+      
+    default:
+      break
+    }
+  }
+  
 }
+
+protocol DrawingsViewControllerDelegate: class {
+  /// Called when the user selects the add button
+  func drawingsViewControllerDidSelectAdd(_ controller: DrawingsViewController)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -59,7 +59,7 @@ class MessagesViewController: MSMessagesAppViewController {
     guard let controller = storyboard?.instantiateViewController(withIdentifier: DrawingsViewController.storyboardIdentifier) as? DrawingsViewController else {
       fatalError("Unable to instantiate a DrawingsViewController from the storyboard")
     }
-    
+    controller.delegate = self
     return controller
   }
   
@@ -69,6 +69,27 @@ class MessagesViewController: MSMessagesAppViewController {
     }
     return controller
   }
-
-
 }
+
+
+extension MessagesViewController: DrawingsViewControllerDelegate {
+  func drawingsViewControllerDidSelectAdd(_ controller: DrawingsViewController) {
+    // The use selected the add button, change presentation style to '.expanded'
+    requestPresentationStyle(.expanded)
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

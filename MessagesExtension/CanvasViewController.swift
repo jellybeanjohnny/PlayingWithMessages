@@ -9,7 +9,7 @@
 import UIKit
 
 class CanvasViewController: UIViewController {
-
+  
   // MARK: - Properties
   static let storyboardIdentifier = "CanvasViewController"
   
@@ -17,9 +17,16 @@ class CanvasViewController: UIViewController {
   
   
   @IBAction func doneButtonPressed() {
+    saveImage()
+    dismiss(animated: true, completion: nil)
+  }
+  
+  func saveImage() {
     if let drawing = canvasView.incrementalImage {
       DrawingHistory.save(drawing: drawing)
+      
     }
+    
   }
-
+  
 }
