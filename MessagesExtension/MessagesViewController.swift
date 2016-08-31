@@ -27,10 +27,10 @@ class MessagesViewController: MSMessagesAppViewController {
     // Determine the controller to present.
     let controller: UIViewController
     if presentationStyle == .compact {
+      // Show a list of previously created drawings
       controller = instantitateDrawingsViewController()
-    }
-    else {
-      controller = instantiateCanvasViewController()
+    } else {
+      controller = instantiateCanvasViewController(withSelectedMessage: conversation.selectedMessage)
     }
     
     // Remove any existing child controllers
@@ -63,13 +63,21 @@ class MessagesViewController: MSMessagesAppViewController {
     return controller
   }
   
-  func instantiateCanvasViewController() -> UIViewController {
+  func instantiateCanvasViewController(withSelectedMessage message: MSMessage?) -> UIViewController {
     guard let controller = storyboard?.instantiateViewController(withIdentifier: CanvasViewController.storyboardIdentifier) as? CanvasViewController else {
       fatalError("Unable to instantiate a CanvasViewController from the storyboard")
     }
     controller.delegate = self
+
+    if message?.layout is MSMessageTemplateLayout {
+      let layout = message?.layout as! MSMessageTemplateLayout
+      controller.canvasView.incrementalImage = layout.image
+    }
+    
     return controller
   }
+  
+
   
   // MARK: Convenience
   func composeMessage(with drawing: UIImage, session: MSSession? = nil) -> MSMessage {
@@ -77,6 +85,7 @@ class MessagesViewController: MSMessagesAppViewController {
     layout.image = drawing
     let message = MSMessage(session: session ?? MSSession())
     message.layout = layout
+    
     
     return message
   }
@@ -103,17 +112,6 @@ extension MessagesViewController: CanvasViewControllerDelegate {
     dismiss()
   }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
