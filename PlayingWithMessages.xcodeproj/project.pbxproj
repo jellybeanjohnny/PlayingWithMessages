@@ -12,6 +12,7 @@
 		C923B7211D7610290055228E /* CGPoint+MidPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C923B7201D7610290055228E /* CGPoint+MidPoint.swift */; };
 		C923B7231D77261B0055228E /* DrawingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C923B7221D77261B0055228E /* DrawingsViewController.swift */; };
 		C96D3CBA1D77475E002357AD /* DrawingHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96D3CB91D77475E002357AD /* DrawingHistory.swift */; };
+		C96D3CBF1D776E97002357AD /* DrawingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96D3CBE1D776E97002357AD /* DrawingCollectionViewCell.swift */; };
 		C9A0C1CD1D736B4700E1798C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9A0C1CC1D736B4700E1798C /* Assets.xcassets */; };
 		C9A0C1D41D736B4700E1798C /* MessagesExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C9A0C1D31D736B4700E1798C /* MessagesExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C9A0C1D91D736B4700E1798C /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9A0C1D81D736B4700E1798C /* Messages.framework */; };
@@ -50,6 +51,7 @@
 		C923B7201D7610290055228E /* CGPoint+MidPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+MidPoint.swift"; sourceTree = "<group>"; };
 		C923B7221D77261B0055228E /* DrawingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingsViewController.swift; sourceTree = "<group>"; };
 		C96D3CB91D77475E002357AD /* DrawingHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingHistory.swift; sourceTree = "<group>"; };
+		C96D3CBE1D776E97002357AD /* DrawingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawingCollectionViewCell.swift; sourceTree = "<group>"; };
 		C9A0C1C91D736B4700E1798C /* PlayingWithMessages.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlayingWithMessages.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9A0C1CC1D736B4700E1798C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9A0C1CE1D736B4700E1798C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -80,6 +82,33 @@
 				C9A0C1E21D736B4700E1798C /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C96D3CBB1D776E5A002357AD /* Canvas */ = {
+			isa = PBXGroup;
+			children = (
+				C923B71E1D760C370055228E /* CanvasView.swift */,
+				C923B71B1D760A120055228E /* CanvasViewController.swift */,
+			);
+			name = Canvas;
+			sourceTree = "<group>";
+		};
+		C96D3CBC1D776E65002357AD /* Drawings */ = {
+			isa = PBXGroup;
+			children = (
+				C923B7221D77261B0055228E /* DrawingsViewController.swift */,
+				C96D3CB91D77475E002357AD /* DrawingHistory.swift */,
+				C96D3CBE1D776E97002357AD /* DrawingCollectionViewCell.swift */,
+			);
+			name = Drawings;
+			sourceTree = "<group>";
+		};
+		C96D3CBD1D776E6F002357AD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C923B7201D7610290055228E /* CGPoint+MidPoint.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		C9A0C1C21D736B4600E1798C = {
@@ -121,14 +150,12 @@
 		C9A0C1DA1D736B4700E1798C /* MessagesExtension */ = {
 			isa = PBXGroup;
 			children = (
-				C923B71E1D760C370055228E /* CanvasView.swift */,
-				C923B71B1D760A120055228E /* CanvasViewController.swift */,
+				C96D3CBD1D776E6F002357AD /* Extensions */,
+				C96D3CBC1D776E65002357AD /* Drawings */,
+				C96D3CBB1D776E5A002357AD /* Canvas */,
 				C9A0C1DB1D736B4700E1798C /* MessagesViewController.swift */,
 				C9A0C1DD1D736B4700E1798C /* MainInterface.storyboard */,
 				C923B71D1D760A1E0055228E /* Supporting Files */,
-				C923B7201D7610290055228E /* CGPoint+MidPoint.swift */,
-				C923B7221D77261B0055228E /* DrawingsViewController.swift */,
-				C96D3CB91D77475E002357AD /* DrawingHistory.swift */,
 			);
 			path = MessagesExtension;
 			sourceTree = "<group>";
@@ -234,6 +261,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C96D3CBF1D776E97002357AD /* DrawingCollectionViewCell.swift in Sources */,
 				C923B7211D7610290055228E /* CGPoint+MidPoint.swift in Sources */,
 				C923B71C1D760A120055228E /* CanvasViewController.swift in Sources */,
 				C9A0C1DC1D736B4700E1798C /* MessagesViewController.swift in Sources */,

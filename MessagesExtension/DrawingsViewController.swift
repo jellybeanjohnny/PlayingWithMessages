@@ -71,12 +71,18 @@ extension DrawingsViewController: UICollectionViewDataSource {
     let item = items[indexPath.row]
     
     switch item {
-    case .drawing:
-      return dequeueDrawingCell(at: indexPath)
+    case .drawing(let drawing):
+      return dequeueDrawingCell(for: drawing, at: indexPath)
     case .create:
       return dequeueCreateDrawingCell(at: indexPath)
     }
     
+  }
+  
+  private func dequeueDrawingCell(for drawing: UIImage, at indexPath: IndexPath) -> UICollectionViewCell {
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DrawingsViewController.drawingCellIdentifier, for: indexPath) as! DrawingCollectionViewCell
+    cell.displayImageView.image = drawing
+    return cell
   }
   
   private func dequeueCreateDrawingCell(at indexPath: IndexPath) -> UICollectionViewCell {
@@ -84,10 +90,7 @@ extension DrawingsViewController: UICollectionViewDataSource {
     return cell
   }
   
-  private func dequeueDrawingCell(at indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DrawingsViewController.drawingCellIdentifier, for: indexPath)
-    return cell
-  }
+
   
 }
 

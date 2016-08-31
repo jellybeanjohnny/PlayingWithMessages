@@ -65,14 +65,25 @@
                                             <constraint firstItem="Ifl-Ve-q6U" firstAttribute="top" secondItem="X0t-Za-0IN" secondAttribute="top" id="vaD-7z-oyC"/>
                                         </constraints>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DrawingCell" id="JQW-E5-ASa">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DrawingCell" id="JQW-E5-ASa" customClass="DrawingCollectionViewCell" customModule="MessagesExtension" customModuleProvider="target">
                                         <rect key="frame" x="68" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fBO-RF-tvl"/>
+                                            </subviews>
                                         </view>
-                                        <color key="backgroundColor" red="0.54412005529999996" green="0.1852806397" blue="0.88319188400000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="fBO-RF-tvl" firstAttribute="leading" secondItem="JQW-E5-ASa" secondAttribute="leading" id="0Px-Tn-R28"/>
+                                            <constraint firstItem="fBO-RF-tvl" firstAttribute="top" secondItem="JQW-E5-ASa" secondAttribute="top" id="GiF-2H-1OR"/>
+                                            <constraint firstItem="fBO-RF-tvl" firstAttribute="height" secondItem="JQW-E5-ASa" secondAttribute="height" id="fgP-g5-CEY"/>
+                                            <constraint firstItem="fBO-RF-tvl" firstAttribute="width" secondItem="JQW-E5-ASa" secondAttribute="width" id="gCa-XS-mu9"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="displayImageView" destination="fBO-RF-tvl" id="2cv-J7-P7j"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
