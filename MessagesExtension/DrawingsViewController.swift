@@ -122,20 +122,3 @@ protocol DrawingsViewControllerDelegate: class {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

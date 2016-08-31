@@ -67,11 +67,22 @@ class MessagesViewController: MSMessagesAppViewController {
     guard let controller = storyboard?.instantiateViewController(withIdentifier: CanvasViewController.storyboardIdentifier) as? CanvasViewController else {
       fatalError("Unable to instantiate a CanvasViewController from the storyboard")
     }
+    controller.delegate = self
     return controller
+  }
+  
+  // MARK: Convenience
+  func composeMessage(with drawing: UIImage, session: MSSession? = nil) -> MSMessage {
+    let layout = MSMessageTemplateLayout()
+    layout.image = drawing
+    let message = MSMessage(session: session ?? MSSession())
+    message.layout = layout
+    
+    return message
   }
 }
 
-
+// MARK: DrawingViewControllerDelegate
 extension MessagesViewController: DrawingsViewControllerDelegate {
   func drawingsViewControllerDidSelectAdd(_ controller: DrawingsViewController) {
     // The use selected the add button, change presentation style to '.expanded'
@@ -79,6 +90,19 @@ extension MessagesViewController: DrawingsViewControllerDelegate {
   }
 }
 
+extension MessagesViewController: CanvasViewControllerDelegate {
+  func canvasViewController(_ controller: CanvasViewController, didFinish drawing: UIImage) {
+    guard let conversation = activeConversation else { fatalError("Expected a conversation") }
+    // The user completed a drawing, stage this image to be sent
+    let message = composeMessage(with: drawing, session: conversation.selectedMessage?.session)
+    
+    conversation.insert(message) { (error) in
+      print("Error inserting message: \(error)")
+    }
+    
+    dismiss()
+  }
+}
 
 
 

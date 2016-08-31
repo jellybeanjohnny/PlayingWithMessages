@@ -13,20 +13,25 @@ class CanvasViewController: UIViewController {
   // MARK: - Properties
   static let storyboardIdentifier = "CanvasViewController"
   
+  
   @IBOutlet weak var canvasView: CanvasView!
   
+  weak var delegate: CanvasViewControllerDelegate?
   
   @IBAction func doneButtonPressed() {
     saveImage()
-    dismiss(animated: true, completion: nil)
   }
   
   func saveImage() {
     if let drawing = canvasView.incrementalImage {
       DrawingHistory.save(drawing: drawing)
-      
+      delegate?.canvasViewController(self, didFinish: drawing)
     }
     
   }
   
+}
+
+protocol CanvasViewControllerDelegate: class {
+  func canvasViewController(_ controller: CanvasViewController, didFinish drawing: UIImage)
 }
