@@ -68,11 +68,7 @@ class MessagesViewController: MSMessagesAppViewController {
       fatalError("Unable to instantiate a CanvasViewController from the storyboard")
     }
     controller.delegate = self
-
-    if message?.layout is MSMessageTemplateLayout {
-      let layout = message?.layout as! MSMessageTemplateLayout
-      controller.canvasView.incrementalImage = layout.image
-    }
+    controller.imageID = message?.url?.absoluteString
     
     return controller
   }

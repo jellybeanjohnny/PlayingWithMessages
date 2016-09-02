@@ -22,6 +22,7 @@
 		C9EB1FEC1D79B84800E71229 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9EB1FEB1D79B84800E71229 /* CloudKit.framework */; };
 		C9EB1FEF1D79BA1500E71229 /* CloudKitInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EB1FEE1D79BA1500E71229 /* CloudKitInterface.swift */; };
 		C9EB1FF11D79BF4300E71229 /* UIImage+CKAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EB1FF01D79BF4300E71229 /* UIImage+CKAsset.swift */; };
+		C9EB1FF31D79F6A500E71229 /* UIImage+Scaling.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EB1FF21D79F6A500E71229 /* UIImage+Scaling.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		C9EB1FEB1D79B84800E71229 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		C9EB1FEE1D79BA1500E71229 /* CloudKitInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitInterface.swift; sourceTree = "<group>"; };
 		C9EB1FF01D79BF4300E71229 /* UIImage+CKAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+CKAsset.swift"; sourceTree = "<group>"; };
+		C9EB1FF21D79F6A500E71229 /* UIImage+Scaling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Scaling.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 			children = (
 				C923B7201D7610290055228E /* CGPoint+MidPoint.swift */,
 				C9EB1FF01D79BF4300E71229 /* UIImage+CKAsset.swift */,
+				C9EB1FF21D79F6A500E71229 /* UIImage+Scaling.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C96D3CBF1D776E97002357AD /* DrawingCollectionViewCell.swift in Sources */,
+				C9EB1FF31D79F6A500E71229 /* UIImage+Scaling.swift in Sources */,
 				C923B7211D7610290055228E /* CGPoint+MidPoint.swift in Sources */,
 				C9EB1FEF1D79BA1500E71229 /* CloudKitInterface.swift in Sources */,
 				C923B71C1D760A120055228E /* CanvasViewController.swift in Sources */,

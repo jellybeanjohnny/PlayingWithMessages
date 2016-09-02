@@ -31,6 +31,7 @@ class CanvasView: UIView {
       newValue?.draw(in: bounds)
       self.incrementalImage = UIGraphicsGetImageFromCurrentImageContext()
       UIGraphicsEndImageContext()
+      setNeedsDisplay()
     }
   }
   
