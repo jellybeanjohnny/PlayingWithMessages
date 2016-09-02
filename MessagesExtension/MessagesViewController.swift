@@ -80,11 +80,12 @@ class MessagesViewController: MSMessagesAppViewController {
 
   
   // MARK: Convenience
-  func composeMessage(with drawing: UIImage, session: MSSession? = nil) -> MSMessage {
+  func composeMessage(with drawing: UIImage, imageID: String, session: MSSession? = nil) -> MSMessage {
     let layout = MSMessageTemplateLayout()
     layout.image = drawing
     let message = MSMessage(session: session ?? MSSession())
     message.layout = layout
+    message.url = URL(string: imageID)
     
     
     return message
@@ -100,17 +101,22 @@ extension MessagesViewController: DrawingsViewControllerDelegate {
 }
 
 extension MessagesViewController: CanvasViewControllerDelegate {
-  func canvasViewController(_ controller: CanvasViewController, didFinish drawing: UIImage) {
+  func canvasViewController(_ controller: CanvasViewController, didFinish drawing: UIImage, imageID: String) {
     guard let conversation = activeConversation else { fatalError("Expected a conversation") }
     // The user completed a drawing, stage this image to be sent
-    let message = composeMessage(with: drawing, session: conversation.selectedMessage?.session)
+    let message = composeMessage(with: drawing, imageID: imageID, session: conversation.selectedMessage?.session)
     
     conversation.insert(message) { (error) in
       print("Error inserting message: \(error)")
     }
-    
     dismiss()
   }
+
+  func canvasViewController(_ controller: CanvasViewController, didFailToSaveDrawingWithError error: Error) {
+    print("Failed to save drawing: \(error.localizedDescription)")
+    dismiss()
+  }
+  
 }
 
 

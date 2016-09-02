@@ -25,13 +25,20 @@ class CanvasViewController: UIViewController {
   func saveImage() {
     if let drawing = canvasView.incrementalImage {
       DrawingHistory.save(drawing: drawing)
-      delegate?.canvasViewController(self, didFinish: drawing)
+      CloudKitInterface.save(drawing: drawing, completion: { (imageID, error) in
+        if let error = error {
+          self.delegate?.canvasViewController(self, didFailToSaveDrawingWithError: error)
+        } else if let imageID = imageID {
+          print("Successfully saved drawing with ID: \(imageID)")
+          self.delegate?.canvasViewController(self, didFinish: drawing, imageID: imageID)
+        }
+      })
     }
-    
   }
   
 }
 
 protocol CanvasViewControllerDelegate: class {
-  func canvasViewController(_ controller: CanvasViewController, didFinish drawing: UIImage)
+  func canvasViewController(_ controller: CanvasViewController, didFinish drawing: UIImage, imageID: String)
+  func canvasViewController(_ controller: CanvasViewController, didFailToSaveDrawingWithError error: Error)
 }
