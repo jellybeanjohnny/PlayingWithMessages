@@ -21,6 +21,7 @@
 		C9A0C1E11D736B4700E1798C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9A0C1E01D736B4700E1798C /* Assets.xcassets */; };
 		C9EB1FEC1D79B84800E71229 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9EB1FEB1D79B84800E71229 /* CloudKit.framework */; };
 		C9EB1FEF1D79BA1500E71229 /* CloudKitInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EB1FEE1D79BA1500E71229 /* CloudKitInterface.swift */; };
+		C9EB1FF11D79BF4300E71229 /* UIImage+CKAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EB1FF01D79BF4300E71229 /* UIImage+CKAsset.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		C9EB1FEA1D79B84400E71229 /* MessagesExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MessagesExtension.entitlements; sourceTree = "<group>"; };
 		C9EB1FEB1D79B84800E71229 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		C9EB1FEE1D79BA1500E71229 /* CloudKitInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitInterface.swift; sourceTree = "<group>"; };
+		C9EB1FF01D79BF4300E71229 /* UIImage+CKAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+CKAsset.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				C923B7201D7610290055228E /* CGPoint+MidPoint.swift */,
+				C9EB1FF01D79BF4300E71229 /* UIImage+CKAsset.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				C9A0C1DC1D736B4700E1798C /* MessagesViewController.swift in Sources */,
 				C923B7231D77261B0055228E /* DrawingsViewController.swift in Sources */,
 				C923B71F1D760C370055228E /* CanvasView.swift in Sources */,
+				C9EB1FF11D79BF4300E71229 /* UIImage+CKAsset.swift in Sources */,
 				C96D3CBA1D77475E002357AD /* DrawingHistory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
