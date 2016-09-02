@@ -3,7 +3,7 @@
 //  PlayingWithMessages
 //
 //  Created by Matt Amerige on 8/30/16.
-//  Copyright © 2016 mogumogu. All rights reserved.
+//  Copyright © 2016 Build Things. All rights reserved.
 //
 
 import Foundation

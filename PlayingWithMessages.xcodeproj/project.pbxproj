@@ -20,6 +20,7 @@
 		C9A0C1DF1D736B4700E1798C /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9A0C1DD1D736B4700E1798C /* MainInterface.storyboard */; };
 		C9A0C1E11D736B4700E1798C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9A0C1E01D736B4700E1798C /* Assets.xcassets */; };
 		C9EB1FEC1D79B84800E71229 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9EB1FEB1D79B84800E71229 /* CloudKit.framework */; };
+		C9EB1FEF1D79BA1500E71229 /* CloudKitInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EB1FEE1D79BA1500E71229 /* CloudKitInterface.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		C9A0C1E21D736B4700E1798C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9EB1FEA1D79B84400E71229 /* MessagesExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MessagesExtension.entitlements; sourceTree = "<group>"; };
 		C9EB1FEB1D79B84800E71229 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		C9EB1FEE1D79BA1500E71229 /* CloudKitInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitInterface.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 		C9A0C1DA1D736B4700E1798C /* MessagesExtension */ = {
 			isa = PBXGroup;
 			children = (
+				C9EB1FED1D79B9FF00E71229 /* CloudKit */,
 				C9EB1FEA1D79B84400E71229 /* MessagesExtension.entitlements */,
 				C96D3CBD1D776E6F002357AD /* Extensions */,
 				C96D3CBC1D776E65002357AD /* Drawings */,
@@ -164,6 +167,14 @@
 				C923B71D1D760A1E0055228E /* Supporting Files */,
 			);
 			path = MessagesExtension;
+			sourceTree = "<group>";
+		};
+		C9EB1FED1D79B9FF00E71229 /* CloudKit */ = {
+			isa = PBXGroup;
+			children = (
+				C9EB1FEE1D79BA1500E71229 /* CloudKitInterface.swift */,
+			);
+			name = CloudKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,7 +222,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
 				LastUpgradeCheck = 0800;
-				ORGANIZATIONNAME = mogumogu;
+				ORGANIZATIONNAME = "Build Things";
 				TargetAttributes = {
 					C9A0C1C81D736B4600E1798C = {
 						CreatedOnToolsVersion = 8.0;
@@ -278,6 +289,7 @@
 			files = (
 				C96D3CBF1D776E97002357AD /* DrawingCollectionViewCell.swift in Sources */,
 				C923B7211D7610290055228E /* CGPoint+MidPoint.swift in Sources */,
+				C9EB1FEF1D79BA1500E71229 /* CloudKitInterface.swift in Sources */,
 				C923B71C1D760A120055228E /* CanvasViewController.swift in Sources */,
 				C9A0C1DC1D736B4700E1798C /* MessagesViewController.swift in Sources */,
 				C923B7231D77261B0055228E /* DrawingsViewController.swift in Sources */,
