@@ -26,14 +26,14 @@ class DrawingHistory {
   }
   
   // MARK: Loading
-  static func load() -> [UIImage] {
-    var drawings = [UIImage]()
+  static func load() -> [Drawing] {
+    var drawings = [Drawing]()
     for index in 0..<DrawingHistory.drawingCount {
       let filename = "Drawing\(index)".appending(PathRouter.pathSuffix)
       let archiveURL = PathRouter.documentsDirectory.appendingPathComponent(filename)
       
-      if let data = NSKeyedUnarchiver.unarchiveObject(withFile: archiveURL.path) as? Data, let image = UIImage(data: data) {
-        drawings.append(image)
+      if let drawing = NSKeyedUnarchiver.unarchiveObject(withFile: archiveURL.path) as? Drawing {
+        drawings.append(drawing)
       }
 
     }
@@ -41,14 +41,14 @@ class DrawingHistory {
   }
   
   // MARK: Saving
-  static func save(drawing: UIImage) {
+  static func save(drawing: Drawing) {
     let saveQueue = OperationQueue()
     saveQueue.addOperation { 
-      guard let data = UIImagePNGRepresentation(drawing) else { fatalError("Unable to convert image to PNG data") }
+      
       let filename = "Drawing\(DrawingHistory.drawingCount)".appending(PathRouter.pathSuffix)
       let archiveURL = PathRouter.documentsDirectory.appendingPathComponent(filename)
       
-      let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(data, toFile: archiveURL.path)
+      let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(drawing, toFile: archiveURL.path)
       if !isSuccessfulSave {
         print("Failed to save drawing")
       }

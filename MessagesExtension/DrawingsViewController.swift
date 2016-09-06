@@ -27,42 +27,46 @@ class DrawingsViewController: UIViewController {
   
   weak var delegate: DrawingsViewControllerDelegate?
   
-  var items: [CollectionViewItem] = []
-  
+  let items: [CollectionViewItem]
   
   @IBOutlet weak var collectionView: UICollectionView!
   
   // MARK: - Initialization
   required init?(coder aDecoder: NSCoder) {
   
+    let reversedDrawings = DrawingHistory.load().reversed()
+    var items: [CollectionViewItem] = reversedDrawings.map{ .drawing($0)}
+    items.insert(.create, at: 0)
+    self.items = items
+    
     super.init(coder: aDecoder)
   }
   
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    loadDrawings()
+//    loadDrawings()
     
     collectionView.delegate = self
     collectionView.dataSource = self
     
   }
   
-  private func loadDrawings() {
-    CloudKitInterface.fetchAllDrawings { [weak self] (drawings) in
-      if let drawings = drawings {
-        let reversedDrawings =  drawings.reversed()
-        var items: [CollectionViewItem] = reversedDrawings.map{ .drawing($0) }
-        items.insert(.create, at: 0)
-        self?.items = items
-        OperationQueue.main.addOperation {
-          self?.collectionView.reloadData()
-        }
-      } else {
-        print("Could not load drawings")
-      }
-    }
-  }
+//  private func loadDrawings() {
+//    CloudKitInterface.fetchAllDrawings { [weak self] (drawings) in
+//      if let drawings = drawings {
+//        let reversedDrawings =  drawings.reversed()
+//        var items: [CollectionViewItem] = reversedDrawings.map{ .drawing($0) }
+//        items.insert(.create, at: 0)
+//        self?.items = items
+//        OperationQueue.main.addOperation {
+//          self?.collectionView.reloadData()
+//        }
+//      } else {
+//        print("Could not load drawings")
+//      }
+//    }
+//  }
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
