@@ -55,7 +55,7 @@ class CanvasViewController: UIViewController {
       } else if let image = image {
         print("Fetch completed!")
         OperationQueue.main.addOperation {
-          self.canvasView.incrementalImage = image
+          self.canvasView.addIncrementalImage(image)
         }
       }
     }

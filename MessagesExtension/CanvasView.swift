@@ -21,19 +21,7 @@ class CanvasView: UIView {
   private var previousPoint = CGPoint()
   private var previousPreviousPoint = CGPoint()
   
-  var incrementalImage: UIImage? {
-    willSet {
-      UIGraphicsBeginImageContextWithOptions(bounds.size, true, 0.0)
-      
-      let rectPath = UIBezierPath(rect: bounds)
-      UIColor.white.setFill()
-      rectPath.fill()
-      newValue?.draw(in: bounds)
-      self.incrementalImage = UIGraphicsGetImageFromCurrentImageContext()
-      UIGraphicsEndImageContext()
-      setNeedsDisplay()
-    }
-  }
+  var incrementalImage: UIImage? 
   
   // MARK: Initialization
   required init?(coder aDecoder: NSCoder) {
@@ -101,6 +89,7 @@ class CanvasView: UIView {
   
   private func drawBitmap() {
     UIGraphicsBeginImageContextWithOptions(bounds.size, true, 0.0)
+
     
     UIColor.black.setStroke()
     if incrementalImage == nil {
@@ -133,4 +122,15 @@ class CanvasView: UIView {
     bezierPath.removeAllPoints()
   }
   
+  func addIncrementalImage(_ image: UIImage) {
+    UIGraphicsBeginImageContextWithOptions(bounds.size, true, 0.0)
+    
+    let rectPath = UIBezierPath(rect: bounds)
+    UIColor.white.setFill()
+    rectPath.fill()
+    image.draw(in: bounds)
+    incrementalImage = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    setNeedsDisplay()
+  }
 }
