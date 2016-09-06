@@ -45,5 +45,41 @@ class CloudKitInterface {
     CloudKitInterface.publicDatabase.add(fetchOperation)
   }
   
+  class func update(drawing: UIImage, withIdentifer imageIdentifer: String, completion: @escaping (Bool, Error?) -> ()) {
+    let recordID = CKRecordID(recordName: imageIdentifer)
+    CloudKitInterface.publicDatabase.fetch(withRecordID: recordID) { (record, error) in
+      if let error = error {
+        print("Error updating record: \(error.localizedDescription)")
+        completion(false, error)
+      } else if let record = record {
+        CloudKitInterface.update(record: record, withDrawing: drawing, completion: { (isSuccessful, error) in
+          completion(isSuccessful, error)
+        })
+      }
+    }
+    
+  }
+  
+ private class func update(record: CKRecord, withDrawing drawing: UIImage, completion: @escaping (Bool, Error?) -> ()) {
+    
+    // creating an asset with the desired image
+    do {
+      record["fullsize"] = try CKAsset(image: drawing)
+    } catch {
+      print("Error creating an asset from the desired image: \(error.localizedDescription)")
+      completion(false, error)
+    }
+    
+    CloudKitInterface.publicDatabase.save(record) { (savedRecord, error) in
+      if let error = error {
+        print("Error saving record to the public database")
+        completion(false, error)
+      } else {
+        print("Successfully saved image")
+        completion(true, nil)
+      }
+    }
+    
+  }
   
 }

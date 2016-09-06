@@ -21,7 +21,7 @@ class CanvasView: UIView {
   private var previousPoint = CGPoint()
   private var previousPreviousPoint = CGPoint()
   
-  var incrementalImage: UIImage? 
+  private(set) var incrementalImage: UIImage?
   
   // MARK: Initialization
   required init?(coder aDecoder: NSCoder) {
@@ -121,6 +121,7 @@ class CanvasView: UIView {
     setNeedsDisplay()
     bezierPath.removeAllPoints()
   }
+  
   
   func addIncrementalImage(_ image: UIImage) {
     UIGraphicsBeginImageContextWithOptions(bounds.size, true, 0.0)

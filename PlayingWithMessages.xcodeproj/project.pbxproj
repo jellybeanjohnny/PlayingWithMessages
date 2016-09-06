@@ -19,6 +19,7 @@
 		C9A0C1DC1D736B4700E1798C /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A0C1DB1D736B4700E1798C /* MessagesViewController.swift */; };
 		C9A0C1DF1D736B4700E1798C /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9A0C1DD1D736B4700E1798C /* MainInterface.storyboard */; };
 		C9A0C1E11D736B4700E1798C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9A0C1E01D736B4700E1798C /* Assets.xcassets */; };
+		C9BE726F1D7F487100246CCD /* Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BE726E1D7F487100246CCD /* Drawing.swift */; };
 		C9EB1FEC1D79B84800E71229 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9EB1FEB1D79B84800E71229 /* CloudKit.framework */; };
 		C9EB1FEF1D79BA1500E71229 /* CloudKitInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EB1FEE1D79BA1500E71229 /* CloudKitInterface.swift */; };
 		C9EB1FF11D79BF4300E71229 /* UIImage+CKAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EB1FF01D79BF4300E71229 /* UIImage+CKAsset.swift */; };
@@ -65,6 +66,7 @@
 		C9A0C1DE1D736B4700E1798C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		C9A0C1E01D736B4700E1798C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9A0C1E21D736B4700E1798C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C9BE726E1D7F487100246CCD /* Drawing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Drawing.swift; sourceTree = "<group>"; };
 		C9EB1FEA1D79B84400E71229 /* MessagesExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MessagesExtension.entitlements; sourceTree = "<group>"; };
 		C9EB1FEB1D79B84800E71229 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		C9EB1FEE1D79BA1500E71229 /* CloudKitInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitInterface.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				C923B7221D77261B0055228E /* DrawingsViewController.swift */,
 				C96D3CB91D77475E002357AD /* DrawingHistory.swift */,
 				C96D3CBE1D776E97002357AD /* DrawingCollectionViewCell.swift */,
+				C9BE726E1D7F487100246CCD /* Drawing.swift */,
 			);
 			name = Drawings;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				C923B71F1D760C370055228E /* CanvasView.swift in Sources */,
 				C9EB1FF11D79BF4300E71229 /* UIImage+CKAsset.swift in Sources */,
 				C96D3CBA1D77475E002357AD /* DrawingHistory.swift in Sources */,
+				C9BE726F1D7F487100246CCD /* Drawing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
