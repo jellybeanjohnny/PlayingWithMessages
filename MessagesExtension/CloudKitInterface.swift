@@ -79,7 +79,32 @@ class CloudKitInterface {
         completion(true, nil)
       }
     }
+  }
+  
+  class func fetchAllDrawings(completion: @escaping ([Drawing]?) -> ()) {
     
+    let predicate = NSPredicate(value: true)
+    let query = CKQuery(recordType: "image", predicate: predicate)
+    CloudKitInterface.publicDatabase.perform(query, inZoneWith: nil) { (records, error) in
+      if let error = error {
+        print("Error fetching drawings: \(error.localizedDescription)")
+        completion(nil)
+      } else if let records = records {
+        let drawings = CloudKitInterface.parseRecords(records)
+        completion(drawings)
+      }
+    }
+    
+  }
+  
+  private class func parseRecords(_ records: [CKRecord]) -> [Drawing] {
+    var drawings: [Drawing] = []
+    for record in records {
+      let imageID = record.recordID.recordName
+      guard let asset = record["fullsize"] as? CKAsset, let image = asset.image else { fatalError("Expected asset type") }
+      drawings.append(Drawing(imageIdentifier: imageID, image: image))
+    }
+    return drawings
   }
   
 }

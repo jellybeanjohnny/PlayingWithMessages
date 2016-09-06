@@ -11,6 +11,8 @@ import Messages
 
 class MessagesViewController: MSMessagesAppViewController {
   
+  
+  
   override func willBecomeActive(with conversation: MSConversation) {
     super.willBecomeActive(with: conversation)
     presentViewController(for: conversation, with: presentationStyle)
@@ -73,6 +75,16 @@ class MessagesViewController: MSMessagesAppViewController {
     return controller
   }
   
+  func instantiateCancasViewController(withDrawing drawing: Drawing) -> UIViewController {
+    guard let controller = storyboard?.instantiateViewController(withIdentifier: CanvasViewController.storyboardIdentifier) as? CanvasViewController else {
+      fatalError("Unable to instantiate a CanvasViewController from the storyboard")
+    }
+    controller.delegate = self
+    controller.imageID = drawing.imageIdentifier
+    
+    return controller
+  }
+  
 
   
   // MARK: Convenience
@@ -94,6 +106,18 @@ extension MessagesViewController: DrawingsViewControllerDelegate {
     // The use selected the add button, change presentation style to '.expanded'
     requestPresentationStyle(.expanded)
   }
+  
+  func drawingsViewControllerDidSelectDrawing(_ controller: DrawingsViewController, drawing: Drawing) {
+    guard let conversation = activeConversation else { fatalError("Expected a conversation") }
+    let message = composeMessage(with: drawing.image, imageID: drawing.imageIdentifier)
+    
+    conversation.insert(message) { (error) in
+      if let error = error {
+        print("Error inserting message:\(error.localizedDescription)")
+      }
+    }
+    dismiss()
+  }
 }
 
 extension MessagesViewController: CanvasViewControllerDelegate {
@@ -103,7 +127,10 @@ extension MessagesViewController: CanvasViewControllerDelegate {
     let message = composeMessage(with: drawing, imageID: imageID, session: conversation.selectedMessage?.session)
     
     conversation.insert(message) { (error) in
-      print("Error inserting message: \(error)")
+      if let error = error {
+        print("Error inserting message: \(error.localizedDescription)")
+      }
+      
     }
     dismiss()
   }

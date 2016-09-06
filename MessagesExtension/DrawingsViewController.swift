@@ -16,7 +16,7 @@ class DrawingsViewController: UIViewController {
   
   /// An enumeration that represents an item in the collection view.
   enum CollectionViewItem {
-    case drawing(UIImage)
+    case drawing(Drawing)
     case create
   }
   
@@ -27,30 +27,41 @@ class DrawingsViewController: UIViewController {
   
   weak var delegate: DrawingsViewControllerDelegate?
   
-  let items: [CollectionViewItem]
+  var items: [CollectionViewItem] = []
   
   
   @IBOutlet weak var collectionView: UICollectionView!
   
   // MARK: - Initialization
   required init?(coder aDecoder: NSCoder) {
-    
-    let reversedHistory = DrawingHistory.load().reversed()
-    var items: [CollectionViewItem] = reversedHistory.map{ .drawing($0) }
-    
-    items.insert(.create, at: 0)
-    
-    self.items = items
-    
+  
     super.init(coder: aDecoder)
   }
   
   override func viewDidLoad() {
     super.viewDidLoad()
+
+    loadDrawings()
     
     collectionView.delegate = self
     collectionView.dataSource = self
     
+  }
+  
+  private func loadDrawings() {
+    CloudKitInterface.fetchAllDrawings { [weak self] (drawings) in
+      if let drawings = drawings {
+        let reversedDrawings =  drawings.reversed()
+        var items: [CollectionViewItem] = reversedDrawings.map{ .drawing($0) }
+        items.insert(.create, at: 0)
+        self?.items = items
+        OperationQueue.main.addOperation {
+          self?.collectionView.reloadData()
+        }
+      } else {
+        print("Could not load drawings")
+      }
+    }
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -81,9 +92,9 @@ extension DrawingsViewController: UICollectionViewDataSource {
     
   }
   
-  private func dequeueDrawingCell(for drawing: UIImage, at indexPath: IndexPath) -> UICollectionViewCell {
+  private func dequeueDrawingCell(for drawing: Drawing, at indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DrawingsViewController.drawingCellIdentifier, for: indexPath) as! DrawingCollectionViewCell
-    cell.displayImageView.image = drawing
+    cell.displayImageView.image = drawing.image
     return cell
   }
   
@@ -105,17 +116,18 @@ extension DrawingsViewController: UICollectionViewDelegate {
     switch item {
     case .create:
       delegate?.drawingsViewControllerDidSelectAdd(self)
-      
-    default:
-      break
+    case .drawing(let drawing):
+      delegate?.drawingsViewControllerDidSelectDrawing(self, drawing: drawing)
     }
   }
   
 }
 
+// MARK: - DrawingsViewControllerDelegate 
 protocol DrawingsViewControllerDelegate: class {
   /// Called when the user selects the add button
   func drawingsViewControllerDidSelectAdd(_ controller: DrawingsViewController)
+  func drawingsViewControllerDidSelectDrawing(_ controller: DrawingsViewController, drawing: Drawing)
 }
 
 
