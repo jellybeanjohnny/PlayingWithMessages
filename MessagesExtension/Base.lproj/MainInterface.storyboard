@@ -132,6 +132,9 @@
                                         <state key="normal" title="Undo">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="undoButtonPressed" destination="jot-2E-IAt" eventType="touchUpInside" id="eVP-oO-aEm"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQh-TS-RD0">
                                         <color key="backgroundColor" red="0.0" green="0.74117647058823533" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>

@@ -33,6 +33,10 @@ class CanvasViewController: UIViewController {
     save()
   }
   
+  @IBAction func undoButtonPressed() {
+    canvasView.undo()
+  }
+  
   func storeInCloud() {
     if let drawing = canvasView.incrementalImage {
       print("Saving image to CloudKit...")
