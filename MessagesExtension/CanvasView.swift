@@ -23,6 +23,11 @@ class CanvasView: UIView {
   
   private(set) var incrementalImage: UIImage?
   
+  // For an undo feature
+  private var previousIncrementalImage: UIImage?
+  private var userDrawnLines: [UIImage] = []
+  private var undoImageLimit: UIImage? // this is the furthest back the undo feature will support.
+  
   // MARK: Initialization
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
@@ -73,6 +78,7 @@ class CanvasView: UIView {
   
   override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
     addToBitmap()
+    addIncrementalImageForUndoCache()
   }
   
   override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -134,4 +140,31 @@ class CanvasView: UIView {
     UIGraphicsEndImageContext()
     setNeedsDisplay()
   }
+  
+  //MARK: - Undo feature
+  func undo() {
+    if userDrawnLines.count == 1 {
+      // There is only one stored line left, so we can get rid of it and revert to the limit image.
+      userDrawnLines.removeLast()
+      incrementalImage = undoImageLimit
+    } else if userDrawnLines.count >= 2 {
+      userDrawnLines.removeLast()
+      incrementalImage = userDrawnLines.last
+    }
+    setNeedsDisplay()
+  }
+  
+  private func addIncrementalImageForUndoCache() {
+    
+    // at max the undo will only hold up to 5 "lines". After that we will update furtherst point back the user can undo to.
+    if userDrawnLines.count >= 5 {
+      undoImageLimit = userDrawnLines.first
+      userDrawnLines.remove(at: 0)
+    }
+    
+    if let image = incrementalImage {
+      userDrawnLines.append(image)
+    }
+  }
+  
 }

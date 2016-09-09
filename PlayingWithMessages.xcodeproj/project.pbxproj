@@ -235,6 +235,7 @@
 				TargetAttributes = {
 					C9A0C1C81D736B4600E1798C = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = VQXELCH5FM;
 						ProvisioningStyle = Automatic;
 					};
 					C9A0C1D21D736B4700E1798C = {
@@ -458,6 +459,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = VQXELCH5FM;
 				INFOPLIST_FILE = PlayingWithMessages/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = com.BuildThings.PlayingWithMessages;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -471,6 +473,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = VQXELCH5FM;
 				INFOPLIST_FILE = PlayingWithMessages/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = com.BuildThings.PlayingWithMessages;
 				PRODUCT_NAME = "$(TARGET_NAME)";
