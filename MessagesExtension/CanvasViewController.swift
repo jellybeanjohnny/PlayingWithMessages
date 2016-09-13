@@ -7,11 +7,14 @@
 //
 
 import UIKit
+//import DGActivityIndicatorView
 
 class CanvasViewController: UIViewController {
   
   // MARK: - Properties
   static let storyboardIdentifier = "CanvasViewController"
+  
+  let activityIndicatorView = DGActivityIndicatorView(type: .cookieTerminator)!
   
   var imageID: String?
   
@@ -35,6 +38,7 @@ class CanvasViewController: UIViewController {
   
   @IBAction func undoButtonPressed() {
     canvasView.undo()
+    startLoadingAnimation()
   }
   
   func storeInCloud() {
@@ -51,7 +55,6 @@ class CanvasViewController: UIViewController {
             let savedDrawing = Drawing(imageIdentifier: imageID, image: drawing)
             DrawingHistory.save(drawing: savedDrawing)
           }
-          
           self.delegate?.canvasViewController(self, didFinish: drawing, imageID: imageID)
         }
       })
@@ -80,6 +83,14 @@ class CanvasViewController: UIViewController {
         }
       }
     }
+  }
+  
+  private func startLoadingAnimation() {
+    activityIndicatorView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+    activityIndicatorView.center = view.center
+    activityIndicatorView.backgroundColor = UIColor.red
+    view.addSubview(activityIndicatorView)
+    activityIndicatorView.startAnimating()
   }
   
 }
