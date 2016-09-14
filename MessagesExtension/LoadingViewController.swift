@@ -57,7 +57,7 @@ class LoadingViewController: UIViewController {
   func setupLoadingText() {
     let loadingLabel = UILabel()
     loadingLabel.text = "Finishing up..."
-    loadingLabel.font = UIFont(name: "Marker Felt", size: 20)
+    loadingLabel.font = UIFont(name: "Futura-CondensedExtraBold", size: 20)
     loadingLabel.textColor = UIColor.white
     
     loadingLabel.translatesAutoresizingMaskIntoConstraints = false
