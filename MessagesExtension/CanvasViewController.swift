@@ -11,7 +11,7 @@ import UIKit
 
 class CanvasViewController: UIViewController {
   
-  // MARK: - Properties
+  //varK: - Properties
   static let storyboardIdentifier = "CanvasViewController"
   
   let loadingVC = LoadingViewController()
