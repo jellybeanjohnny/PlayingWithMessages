@@ -14,7 +14,8 @@ class CanvasViewController: UIViewController {
   // MARK: - Properties
   static let storyboardIdentifier = "CanvasViewController"
   
-  let activityIndicatorView = DGActivityIndicatorView(type: .cookieTerminator)!
+  let loadingVC = LoadingViewController()
+  
   
   var imageID: String?
   
@@ -26,7 +27,10 @@ class CanvasViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    setupLoadingView()
+    
     loadImage(forIdentifier: imageID)
+    
   }
   
   @IBAction func doneButtonPressed() {
@@ -38,13 +42,33 @@ class CanvasViewController: UIViewController {
   
   @IBAction func undoButtonPressed() {
     canvasView.undo()
-    startLoadingAnimation()
+  }
+  
+  func setupLoadingView() {
+    loadingVC.view.bounds = view.bounds
+    
+    view.addSubview(loadingVC.view)
+    
+    loadingVC.view.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+    loadingVC.view.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+    loadingVC.view.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+    loadingVC.view.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
+  }
+  
+  func toggleLoadingAnimation() {
+    if loadingVC.isAnimating {
+      loadingVC.stopAnimating()
+    } else {
+      loadingVC.startAnimating()
+    }
   }
   
   func storeInCloud() {
     if let drawing = canvasView.incrementalImage {
       print("Saving image to CloudKit...")
+      toggleLoadingAnimation()
       CloudKitInterface.save(drawing: drawing, completion: { (imageID, error) in
+        self.toggleLoadingAnimation()
         if let error = error {
           self.delegate?.canvasViewController(self, didFailToSaveDrawingWithError: error)
         } else if let imageID = imageID {
@@ -85,13 +109,6 @@ class CanvasViewController: UIViewController {
     }
   }
   
-  private func startLoadingAnimation() {
-    activityIndicatorView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
-    activityIndicatorView.center = view.center
-    activityIndicatorView.backgroundColor = UIColor.red
-    view.addSubview(activityIndicatorView)
-    activityIndicatorView.startAnimating()
-  }
   
 }
 

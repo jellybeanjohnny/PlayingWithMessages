@@ -61,6 +61,7 @@
 		C9EB1FEF1D79BA1500E71229 /* CloudKitInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EB1FEE1D79BA1500E71229 /* CloudKitInterface.swift */; };
 		C9EB1FF11D79BF4300E71229 /* UIImage+CKAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EB1FF01D79BF4300E71229 /* UIImage+CKAsset.swift */; };
 		C9EB1FF31D79F6A500E71229 /* UIImage+Scaling.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9EB1FF21D79F6A500E71229 /* UIImage+Scaling.swift */; };
+		C9F031361D8892CA00D4CC87 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F031351D8892CA00D4CC87 /* LoadingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -187,6 +188,7 @@
 		C9EB1FEE1D79BA1500E71229 /* CloudKitInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitInterface.swift; sourceTree = "<group>"; };
 		C9EB1FF01D79BF4300E71229 /* UIImage+CKAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+CKAsset.swift"; sourceTree = "<group>"; };
 		C9EB1FF21D79F6A500E71229 /* UIImage+Scaling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Scaling.swift"; sourceTree = "<group>"; };
+		C9F031351D8892CA00D4CC87 /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		F3EE12298DF78B4E18B54D21 /* Pods-PlayingWithMessages.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayingWithMessages.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PlayingWithMessages/Pods-PlayingWithMessages.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -306,6 +308,7 @@
 		C9A0C1DA1D736B4700E1798C /* MessagesExtension */ = {
 			isa = PBXGroup;
 			children = (
+				C9F031341D88921F00D4CC87 /* Loading Animations */,
 				C9CC5EB21D879B2800061D14 /* DGActivityIndicatorView */,
 				C9EB1FEA1D79B84400E71229 /* MessagesExtension.entitlements */,
 				C9EB1FED1D79B9FF00E71229 /* CloudKit */,
@@ -412,6 +415,14 @@
 				C9EB1FEE1D79BA1500E71229 /* CloudKitInterface.swift */,
 			);
 			name = CloudKit;
+			sourceTree = "<group>";
+		};
+		C9F031341D88921F00D4CC87 /* Loading Animations */ = {
+			isa = PBXGroup;
+			children = (
+				C9F031351D8892CA00D4CC87 /* LoadingViewController.swift */,
+			);
+			name = "Loading Animations";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -608,6 +619,7 @@
 				C9CC5EFD1D879B5400061D14 /* DGActivityIndicatorAnimation.m in Sources */,
 				C9CC5F0F1D879B5400061D14 /* DGActivityIndicatorCookieTerminatorAnimation.m in Sources */,
 				C9CC5F191D879B5400061D14 /* DGActivityIndicatorRotatingTrigonAnimation.m in Sources */,
+				C9F031361D8892CA00D4CC87 /* LoadingViewController.swift in Sources */,
 				C9EB1FEF1D79BA1500E71229 /* CloudKitInterface.swift in Sources */,
 				C9CC5F1C1D879B5400061D14 /* DGActivityIndicatorTriplePulseAnimation.m in Sources */,
 				C9CC5EFF1D879B5400061D14 /* DGActivityIndicatorBallClipRotateAnimation.m in Sources */,
@@ -683,6 +695,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -732,6 +745,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
