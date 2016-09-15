@@ -55,22 +55,21 @@ class CanvasViewController: UIViewController {
     loadingVC.view.heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
   }
   
-  func toggleLoadingAnimation() {
-    if loadingVC.isAnimating {
-      loadingVC.stopAnimating()
-    } else {
-      loadingVC.startAnimating()
-    }
-  }
   
   func storeInCloud() {
     if let drawing = canvasView.incrementalImage {
       print("Saving image to CloudKit...")
-      toggleLoadingAnimation()
+      self.loadingVC.startAnimating()
       CloudKitInterface.save(drawing: drawing, completion: { (imageID, error) in
-        self.toggleLoadingAnimation()
-        if let error = error {
-          self.delegate?.canvasViewController(self, didFailToSaveDrawingWithError: error)
+        OperationQueue.main.addOperation {
+          self.loadingVC.stopAnimating()
+        }
+        if error != nil {
+          //   self.delegate?.canvasViewController(self, didFailToSaveDrawingWithError: error)
+          OperationQueue.main.addOperation {
+            self.displayError()
+          }
+          
         } else if let imageID = imageID {
           print("Successfully saved drawing with ID: \(imageID)")
           
@@ -107,6 +106,16 @@ class CanvasViewController: UIViewController {
         }
       }
     }
+  }
+  
+  func displayError() {
+    
+    let alertController = UIAlertController(title: "Oh no!", message: "Something went wrong! Please try again later.", preferredStyle: .alert)
+    let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+    
+    alertController.addAction(okayAction)
+    
+    present(alertController, animated: true, completion: nil)
   }
   
   
