@@ -133,13 +133,7 @@ extension MessagesViewController: CanvasViewControllerDelegate {
       
     }
     dismiss()
-  }
-
-  func canvasViewController(_ controller: CanvasViewController, didFailToSaveDrawingWithError error: Error) {
-    print("Failed to save drawing: \(error.localizedDescription)")
-    dismiss()
-  }
-  
+  }  
 }
 
 

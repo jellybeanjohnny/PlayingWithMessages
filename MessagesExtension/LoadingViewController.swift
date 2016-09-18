@@ -11,6 +11,13 @@ import UIKit
 class LoadingViewController: UIViewController {
   
   var isAnimating = false
+  let loadingLabel = UILabel()
+  var loadingText: String? {
+    willSet {
+      clearLoadingText()
+      setupLoadingText(withText: newValue)
+    }
+  }
   
   var iconSize: CGFloat {
     return UIScreen.main.bounds.size.width / 6.0
@@ -35,7 +42,6 @@ class LoadingViewController: UIViewController {
     activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
     setupDimingView()
     setupIndicatorView()
-    setupLoadingText()
   }
   
   func setupIndicatorView() {
@@ -54,9 +60,8 @@ class LoadingViewController: UIViewController {
     
   }
   
-  func setupLoadingText() {
-    let loadingLabel = UILabel()
-    loadingLabel.text = "Finishing up..."
+  func setupLoadingText(withText text: String?) {
+    loadingLabel.text = text
     loadingLabel.font = UIFont(name: "Futura-CondensedExtraBold", size: 20)
     loadingLabel.textColor = UIColor.white
     
@@ -66,6 +71,10 @@ class LoadingViewController: UIViewController {
     
     loadingLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     loadingLabel.topAnchor.constraint(equalTo: activityIndicatorView.bottomAnchor).isActive = true
+  }
+  
+  func clearLoadingText() {
+    loadingLabel.removeFromSuperview()
   }
   
   func setupDimingView() {

@@ -59,13 +59,13 @@ class CanvasViewController: UIViewController {
   func storeInCloud() {
     if let drawing = canvasView.incrementalImage {
       print("Saving image to CloudKit...")
-      self.loadingVC.startAnimating()
+      loadingVC.loadingText = "Finishing up..."
+      loadingVC.startAnimating()
       CloudKitInterface.save(drawing: drawing, completion: { (imageID, error) in
         OperationQueue.main.addOperation {
           self.loadingVC.stopAnimating()
         }
         if error != nil {
-          //   self.delegate?.canvasViewController(self, didFailToSaveDrawingWithError: error)
           OperationQueue.main.addOperation {
             self.displayError()
           }
@@ -96,9 +96,15 @@ class CanvasViewController: UIViewController {
       return
     }
     print("Fetching image from CloudKit...")
+    loadingVC.loadingText = "Loading..."
+    loadingVC.startAnimating()
     CloudKitInterface.fetchImage(withIdentifier: identifier) { (image, error) in
+      OperationQueue.main.addOperation {
+        self.loadingVC.stopAnimating()
+      }
       if let error = error {
         print("Error fetching drawing: \(error.localizedDescription)")
+        self.displayError()
       } else if let image = image {
         print("Fetch completed!")
         OperationQueue.main.addOperation {
@@ -123,5 +129,4 @@ class CanvasViewController: UIViewController {
 
 protocol CanvasViewControllerDelegate: class {
   func canvasViewController(_ controller: CanvasViewController, didFinish drawing: UIImage, imageID: String)
-  func canvasViewController(_ controller: CanvasViewController, didFailToSaveDrawingWithError error: Error)
 }
