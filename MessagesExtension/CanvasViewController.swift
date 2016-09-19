@@ -86,6 +86,13 @@ class CanvasViewController: UIViewController {
   
   func save() {
     shouldSaveDrawing = true
+    
+    let alertController = UIAlertController(title: "Saved!", message: nil, preferredStyle: .alert)
+    let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+    
+    alertController.addAction(okayAction)
+    
+    present(alertController, animated: true, completion: nil)
   }
   
 
