@@ -107,4 +107,16 @@ class CloudKitInterface {
     return drawings
   }
   
+  class func verifyICloudAccount(isSignedIn:@escaping (Bool)->()) {
+    CKContainer.default().accountStatus { (accountStatus, error) in
+      if accountStatus == .noAccount {
+        print("User is not signed into iCloud")
+        isSignedIn(false)
+      } else {
+        isSignedIn(true)
+      }
+    }
+  }
+
+  
 }

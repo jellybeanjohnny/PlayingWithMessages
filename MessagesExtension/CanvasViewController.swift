@@ -34,7 +34,7 @@ class CanvasViewController: UIViewController {
   }
   
   @IBAction func doneButtonPressed() {
-    storeInCloud()
+    startICloudSavingProcess()
   }
   @IBAction func saveButtonPressed() {
     save()
@@ -56,7 +56,21 @@ class CanvasViewController: UIViewController {
   }
   
   
-  func storeInCloud() {
+  func startICloudSavingProcess() {
+    
+    // check if the user is signed into icloud..
+    CloudKitInterface.verifyICloudAccount { (isSignedIn) in
+      OperationQueue.main.addOperation {
+        if (isSignedIn) {
+          self.storeInICloud()
+        } else {
+          self.displayICloudAccountError()
+        }
+      }
+    }
+  }
+  
+  func storeInICloud() {
     if let drawing = canvasView.incrementalImage {
       print("Saving image to CloudKit...")
       loadingVC.loadingText = "Finishing up..."
@@ -83,6 +97,8 @@ class CanvasViewController: UIViewController {
       })
     }
   }
+  
+  
   
   func save() {
     shouldSaveDrawing = true
@@ -124,6 +140,15 @@ class CanvasViewController: UIViewController {
   func displayError() {
     
     let alertController = UIAlertController(title: "Oh no!", message: "Something went wrong! Please try again later.", preferredStyle: .alert)
+    let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+    
+    alertController.addAction(okayAction)
+    
+    present(alertController, animated: true, completion: nil)
+  }
+  
+  func displayICloudAccountError() {
+    let alertController = UIAlertController(title: "Sign in to iCloud", message: "Sign in to your iCloud account to send drawings. On the Home screen, launch Settings, tap iCloud, and enter your Apple ID. Turn iCloud Drive on. If you don't have an iCloud account, tap Create a new Apple ID.", preferredStyle: .alert)
     let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
     
     alertController.addAction(okayAction)

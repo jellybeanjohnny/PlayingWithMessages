@@ -137,6 +137,7 @@ class CanvasView: UIView {
     rectPath.fill()
     image.draw(in: bounds)
     incrementalImage = UIGraphicsGetImageFromCurrentImageContext()
+    undoImageLimit = incrementalImage
     UIGraphicsEndImageContext()
     setNeedsDisplay()
   }
